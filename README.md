@@ -1,55 +1,55 @@
 # AchieveHub
-ai-achievements-platform/
-│
-├── backend/
-│   ├── src/
-│   │   ├── api/
-│   │   │   ├── auth.js
-│   │   │   ├── students.js
-│   │   │   ├── certificates.js
-│   │   │   ├── recruiters.js
-│   │   │   └── admin.js
-│   │   ├── services/
-│   │   │   ├── ocrService.js
-│   │   │   ├── nlpService.js
-│   │   │   ├── verificationService.js
-│   │   │   └── skillTagger.js
-│   │   ├── models/
-│   │   │   ├── Student.js
-│   │   │   ├── Certificate.js
-│   │   │   ├── Recruiter.js
-│   │   │   └── Admin.js
-│   │   ├── utils/
-│   │   │   └── db.js
-│   │   └── index.js
-│   └── package.json
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── StudentDashboard.jsx
-│   │   │   ├── AdminDashboard.jsx
-│   │   │   ├── RecruiterDashboard.jsx
-│   │   │   └── PortfolioView.jsx
-│   │   ├── pages/
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   ├── UploadCertificate.jsx
-│   │   │   └── Analytics.jsx
-│   │   ├── utils/
-│   │   │   └── api.js
-│   │   └── App.jsx
-│   └── package.json
-│
-├── ai-models/
-│   ├── ocr/
-│   │   └── trained_model/
-│   ├── nlp/
-│   │   └── skill-extraction/
-│   └── verification/
-│       └── trust-engine/
-│
-├── docs/
-│   └── architecture.md
-│
-└── README.md
+AchieveHub/
+-│
+-├── backend/
+-│   ├── src/
+-│   │   ├── api/
+-│   │   │   ├── auth.js
+-│   │   │   ├── students.js
+-│   │   │   ├── certificates.js
+-│   │   │   ├── recruiters.js
+-│   │   │   └── admin.js
+-│   │   ├── services/
+-│   │   │   ├── ocrService.js
+-│   │   │   ├── nlpService.js
+-│   │   │   ├── verificationService.js
+-│   │   │   └── skillTagger.js
+-│   │   ├── models/
+-│   │   │   ├── Student.js
+-│   │   │   ├── Certificate.js
+-│   │   │   ├── Recruiter.js
+-│   │   │   └── Admin.js
+-│   │   ├── utils/
+-│   │   │   └── db.js
+-│   │   └── index.js
+-│   └── package.json
+-│
+-├── frontend/
+-│   ├── src/
+-│   │   ├── components/
+-│   │   │   ├── StudentDashboard.jsx
+-│   │   │   ├── AdminDashboard.jsx
+-│   │   │   ├── RecruiterDashboard.jsx
+-│   │   │   └── PortfolioView.jsx
+-│   │   ├── pages/
+-│   │   │   ├── Login.jsx
+-│   │   │   ├── Register.jsx
+-│   │   │   ├── UploadCertificate.jsx
+-│   │   │   └── Analytics.jsx
+-│   │   ├── utils/
+-│   │   │   └── api.js
+-│   │   └── App.jsx
+-│   └── package.json
+-│
+-├── ai-models/
+-│   ├── ocr/
+-│   │   └── trained_model/
+-│   ├── nlp/
+-│   │   └── skill-extraction/
+-│   └── verification/
+-│       └── trust-engine/
+-│
+-├── docs/
+-│   └── architecture.md
+-│
+-└── README.md
