@@ -1,10 +1,12 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "AchieveHub backend",
+  "type": "module",
+  "main": "scr/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node scr/index.js",
+    "dev": "nodemon --watch scr --ext js,json --exec \"node scr/index.js\""
   },
   "keywords": [],
   "author": "",
