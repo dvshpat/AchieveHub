@@ -29,14 +29,15 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
 
-      alert(`Login successful! Role: ${data.role}`);
-      if (data.role === "student") navigate("/student-dashboard");
-      else if (data.role === "admin") navigate("/admin-dashboard");
-      else navigate("/recruiter-dashboard");
+      alert(`✅ Login successful! Role: ${data.role}`);
+      if (data.role === "student") navigate("/student");
+      else if (data.role === "admin") navigate("/admin");
+      else navigate("/recruiter");
+      window.location.reload();
     } catch (err) {
       console.error(err);
       setError(
-        err.response?.data?.error || "Login failed. Please check your credentials."
+        "❌ " + (err.response?.data?.error || "❌ Login failed. Please check your credentials.")
       );
     }
   };

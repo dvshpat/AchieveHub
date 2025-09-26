@@ -87,14 +87,14 @@ function Navbar() {
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link
-                      to="/dashboard"
-                      className={getLinkClass("/dashboard")}
+                      to="/student"
+                      className={getLinkClass("/student")}
                     >
-                      Dashboard
+                      Student Portal
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
+                {/* <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link to="/upload" className={getLinkClass("/upload")}>
                       Upload Certificate
@@ -110,7 +110,7 @@ function Navbar() {
                       Analytics
                     </Link>
                   </NavigationMenuLink>
-                </NavigationMenuItem>
+                </NavigationMenuItem> */}
               </>
             )}
 
@@ -137,13 +137,13 @@ function Navbar() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link to="/admin/register" className={getLinkClass("/admin/register")}>
                     Register Users
                   </Link>
                 </NavigationMenuLink>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
               </>
             )}
 

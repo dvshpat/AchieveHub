@@ -18,10 +18,10 @@ export default function AdminRegister() {
 
       await API.post("/auth/admin/signup", payload);
 
-      alert("Admin account created successfully! Please login.");
+      alert("✅ Admin account created successfully! Please login.");
       navigate("/login");
     } catch (err) {
-      setError(err.response?.data?.error || "Registration failed");
+      setError("❌ " + (err.response?.data?.error || "Registration failed"));
     }
   };
 

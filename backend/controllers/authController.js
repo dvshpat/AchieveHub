@@ -2,12 +2,10 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
 
-// ✅ Admin Signup
 export const adminSignup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Check if admin already exists
     const existing = await User.findOne({ email });
     if (existing) {
       return res.status(400).json({ error: "Admin already exists with this email" });
@@ -37,7 +35,6 @@ export const adminSignup = async (req, res) => {
   }
 };
 
-// ✅ Admin registers student or recruiter
 export const adminRegister = async (req, res) => {
   try {
     const { name, email, password, role, usn, recruiterId, department, company } = req.body;
@@ -82,7 +79,6 @@ export const adminRegister = async (req, res) => {
   }
 };
 
-// ✅ Login for all roles
 export const login = async (req, res) => {
   try {
     const { email, usn, recruiterId, password } = req.body;

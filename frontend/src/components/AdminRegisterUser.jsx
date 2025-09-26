@@ -29,7 +29,7 @@ export default function AdminRegisterUser() {
 
       await API.post("/auth/admin/register", payload);
 
-      alert(`${role} registered successfully!`);
+      alert(`✅ ${role} registered successfully! \n${role} Email : ${email}`);
       setName("");
       setEmail("");
       setPassword("");
@@ -39,7 +39,7 @@ export default function AdminRegisterUser() {
       setCompany("");
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.error || "Registration failed");
+      setError(`❌ ${err.response?.data?.error || "Registration failed"}`);
     }
   };
 
