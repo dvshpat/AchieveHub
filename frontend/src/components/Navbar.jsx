@@ -128,6 +128,7 @@ function Navbar() {
             )}
 
             {role === "admin" && (
+              <>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link to="/admin" className={getLinkClass("/admin")}>
@@ -135,6 +136,15 @@ function Navbar() {
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link to="/admin/register" className={getLinkClass("/admin/register")}>
+                    Register Users
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              </>
             )}
 
             {/* Logout / Login button */}

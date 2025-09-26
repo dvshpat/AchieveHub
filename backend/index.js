@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import connectDB from "./utils/db.js";
-import authRoutes from "./api/auth.js";
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -15,9 +15,7 @@ connectDB();
 // Routes
 app.use("/api/auth", authRoutes);
 
-app.get('/', (req, res) => {
-  res.send('🌱 namashkaar to the Food Donation API! fffft');
-});
+app.get("/", (req, res) => res.send("🚀 API Running"));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port  http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));

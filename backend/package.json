@@ -6,7 +6,7 @@
   "main": "scr/index.js",
   "scripts": {
     "start": "node scr/index.js",
-    "dev": "nodemon --watch scr --ext js,json --exec \"node scr/index.js\""
+    "dev": "nodemon --watch scr --ext js,json --exec \"node index.js\""
   },
   "keywords": [],
   "author": "",

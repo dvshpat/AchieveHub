@@ -3,9 +3,9 @@ import API from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState(""); // email / usn / recruiterId
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("student"); // Added role selection
+  const [role, setRole] = useState("student");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -14,13 +14,22 @@ export default function Login() {
     setError("");
 
     try {
-      const { data } = await API.post("/auth/login", { email, password, role });
+      const payload = { password, role };
+
+      // Identify login type
+      if (identifier.includes("@")) {
+        payload.email = identifier;
+      } else {
+        payload.usn = identifier; // students login with USN
+        payload.recruiterId = identifier; // recruiters login with recruiterId
+      }
+
+      const { data } = await API.post("/auth/login", payload);
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
-      alert(`Login successful! with ${data.role} role and email: ${email}`);
-      console.log("Login successful:", data);
-      console.log("role", localStorage.getItem("role"));
+
+      alert(`Login successful! Role: ${data.role}`);
       if (data.role === "student") navigate("/student-dashboard");
       else if (data.role === "admin") navigate("/admin-dashboard");
       else navigate("/recruiter-dashboard");
@@ -34,13 +43,9 @@ export default function Login() {
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleLogin}
-        className="bg-white p-8 rounded-lg shadow-md w-96"
-      >
+      <form onSubmit={handleLogin} className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
 
-        {/* Role Selector */}
         <select
           value={role}
           onChange={(e) => setRole(e.target.value)}
@@ -53,13 +58,14 @@ export default function Login() {
         </select>
 
         <input
-          type="email"
-          placeholder="Email"
+          type="text"
+          placeholder="Email / USN / Recruiter ID"
           className="w-full p-2 mb-4 border rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={identifier}
+          onChange={(e) => setIdentifier(e.target.value)}
           required
         />
+
         <input
           type="password"
           placeholder="Password"

@@ -8,6 +8,7 @@ import StudentDashboard from "./components/StudentDashboard";
 import AdminDashboard from "./components/AdminDashboard";
 import RecruiterDashboard from "./components/RecruiterDashboard";
 import PortfolioView from "./components/PortfolioView";
+import AdminRegisterUser from "./components/AdminRegisterUser";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin/register" element={<AdminRegisterUser />} />
         <Route path="/upload" element={<UploadCertificate />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/dashboard" element={<StudentDashboard />} />
