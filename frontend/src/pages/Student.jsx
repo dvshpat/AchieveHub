@@ -4,29 +4,39 @@ import StudentDashboard from "@/components/StudentDashboard";
 
 export default function Student() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        {/* Header Section - First */}
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Student Dashboard</h1>
-          <p className="text-gray-600">Manage your certificates and professional profile</p>
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100">
+      <div className="container mx-auto px-6 py-10 space-y-12">
+
+        {/* Header */}
+        <header className="text-center max-w-2xl mx-auto">
+          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 mb-3">
+            Student Dashboard
+          </h1>
+          <p className="text-gray-600 text-lg">
+            Manage your certificates, professional profile, and social handles in one place.
+          </p>
         </header>
-        
-        {/* Main Content - Vertical Stack */}
-        <div className="flex flex-col gap-8">
-          <div>
-            <Profile />
-          </div>
-          {/* StudentDashboard - Second */}
-          <div>
-            <StudentDashboard />
-          </div>
+
+        {/* Profile + SocialHandles Side-by-Side */}
+        <div className="flex flex-col lg:flex-row gap-8">
           
-          {/* SocialHandles - Third */}
-          <div>
+          {/* Profile Section */}
+          <section className="flex-1 bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition duration-300">
+            <Profile />
+          </section>
+
+          {/* Social Handles Section */}
+          <section className="flex-1 bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition duration-300">
             <SocialHandles />
-          </div>
+          </section>
+
         </div>
+
+        {/* Student Dashboard Section */}
+        <section className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition duration-300">
+          <StudentDashboard />
+        </section>
+
       </div>
     </div>
   );
