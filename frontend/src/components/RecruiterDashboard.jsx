@@ -259,7 +259,64 @@ export default function RecruiterDashboard() {
         </div>
         <h3 className="text-xl font-bold text-gray-900">Coding & Development Profiles</h3>
       </div>
-      
+      {/* Coding Stats Dropdown */}
+{expandedSection[student._id] === "coding" && studentProfiles[student._id] && (
+  <div className="border-t border-gray-200 bg-gradient-to-br from-blue-50 to-indigo-50/30">
+    <div className="p-6 lg:p-8">
+      <div className="flex items-center gap-3 mb-6">
+        {/* <div className="p-2 bg-blue-100 rounded-lg">
+          <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div> */}
+        {/* <h3 className="text-xl font-bold text-gray-900">Coding & Development Profiles</h3> */}
+      </div>
+
+      {/* === CP Score Section === */}
+      {(() => {
+        const leet = studentProfiles[student._id].leetcode || {};
+        const cf = studentProfiles[student._id].codeforces || {};
+
+        const easy = leet.easySolved || 0;
+        const medium = leet.mediumSolved || 0;
+        const hard = leet.hardSolved || 0;
+        const lcRating = leet.contestRating || 0;
+        const cfRating = cf.rating || 0;
+
+        const cpScore =
+          cfRating * 0.6 +
+          lcRating * 0.4 +
+          easy * 1 +
+          medium * 2 +
+          hard * 5;
+
+        return (
+          <div className="mb-8 bg-gradient-to-r from-purple-50 to-purple-100 border border-purple-200 p-5 rounded-xl shadow-sm">
+            <h4 className="text-lg font-bold text-purple-900 mb-2">CP Score</h4>
+            <div className="flex items-center justify-between">
+              <span className="text-3xl font-extrabold text-purple-700">
+                {Math.round(cpScore)}
+              </span>
+              <div className="text-sm text-gray-600 space-y-1 text-right">
+                <p>CF Rating: {cfRating || "N/A"}</p>
+                <p>LC Rating: {lcRating || "N/A"}</p>
+                <p>
+                  Easy: {easy}, Medium: {medium}, Hard: {hard}
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* === Existing Profile Cards === */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        {/* ... your existing LeetCode / Codeforces / GitHub cards ... */}
+      </div>
+    </div>
+  </div>
+)}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {/* LeetCode Card */}
         {studentProfiles[student._id].leetcode?.handle && (

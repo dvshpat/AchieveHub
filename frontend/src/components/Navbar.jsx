@@ -32,8 +32,8 @@ function Navbar() {
   };
 
   const getLinkClass = (path) => {
-    return `px-4 py-2 rounded-md transition-colors hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-blue-500/20 text-gray-700 hover:text-purple-700 hover:shadow-lg shadow-purple-200 hover:font-medium transition-transform duration-300 hover:scale-105 ${
-      location.pathname === path ? "text-purple-700 font-bold bg-gradient-to-r from-purple-100 to-blue-100" : ""
+    return `px-4 py-2 rounded-md transition-colors hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-blue-500/20 text-white hover:text-gray-200 hover:shadow-lg shadow-purple-200 hover:font-medium transition-transform duration-300 hover:scale-105 ${
+      location.pathname === path ? "text-purple-700 font-bold bg-blue" : ""
     }`;
   };
 
@@ -42,7 +42,7 @@ function Navbar() {
   };
 
   return (
-    <header className="bg-gradient-to-r from-white to-gray-50 border-b border-gray-200 shadow-lg w-full">
+    <header className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 shadow-lg w-full">
       <div className="container flex items-center justify-between p-4 mx-auto">
         {/* Mobile menu button */}
         <div className="md:hidden flex items-center">
@@ -56,13 +56,20 @@ function Navbar() {
         </div>
 
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
+        <Link to="/" className="text-2xl mr-4 font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
           AchieveHub
         </Link>
-
+ 
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden md:block w-full">
           <NavigationMenuList className="flex gap-4 w-full items-center">
+            <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link to="/placement" className={getLinkClass("/placement")}>
+                      Placement
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
             {!isAuthenticated && (
               <>
                 <NavigationMenuItem>
