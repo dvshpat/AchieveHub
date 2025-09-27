@@ -126,40 +126,42 @@ export default function Placement() {
 
   // Student applies
   const handleApply = (role) => {
-    alert(`Applied to ${role.title} at ${role.company}`);
+    alert(`✅ Applied to ${role.title} at ${role.company}`);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100 p-6">
-      <div className="container mx-auto space-y-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 p-8">
+      <div className="container mx-auto space-y-12">
         {/* Header */}
-        <header className="text-center mb-8">
-          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
+        <header className="text-center mb-10">
+          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 drop-shadow-lg">
             Placement Portal
           </h1>
-          <p className="text-gray-600 mt-2 text-lg">
+          <p className="text-gray-600 mt-3 text-lg">
             {userRole === "recruiter"
-              ? "List internships and job opportunities."
-              : "Explore and apply for internships and jobs."}
+              ? "📢 Post internships and job opportunities."
+              : "🚀 Explore and apply for internships and jobs."}
           </p>
         </header>
 
         {/* Add Job/Internship Form (Only Recruiter) */}
         {userRole === "recruiter" && (
-          <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 mb-10">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Add Role</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-gray-200">
+            <h2 className="text-2xl font-bold mb-6 text-indigo-700">
+              ➕ Add a New Role
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
                 type="text"
-                placeholder="Title"
+                placeholder="Role Title"
                 value={newRole.title}
                 onChange={(e) => setNewRole({ ...newRole, title: e.target.value })}
-                className="p-2 border rounded-lg"
+                className="p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-400"
               />
               <select
                 value={newRole.type}
                 onChange={(e) => setNewRole({ ...newRole, type: e.target.value })}
-                className="p-2 border rounded-lg"
+                className="p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-400"
               >
                 <option>Internship</option>
                 <option>Job</option>
@@ -169,32 +171,32 @@ export default function Placement() {
                 placeholder="Company"
                 value={newRole.company}
                 onChange={(e) => setNewRole({ ...newRole, company: e.target.value })}
-                className="p-2 border rounded-lg"
+                className="p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-400"
               />
               <input
                 type="text"
                 placeholder="Tech Stack"
                 value={newRole.techStack}
                 onChange={(e) => setNewRole({ ...newRole, techStack: e.target.value })}
-                className="p-2 border rounded-lg"
+                className="p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-400"
               />
               <input
                 type="text"
                 placeholder="Eligibility"
                 value={newRole.eligibility}
                 onChange={(e) => setNewRole({ ...newRole, eligibility: e.target.value })}
-                className="p-2 border rounded-lg md:col-span-2"
+                className="p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-400 md:col-span-2"
               />
               <textarea
-                placeholder="Description"
+                placeholder="Role Description"
                 value={newRole.description}
                 onChange={(e) => setNewRole({ ...newRole, description: e.target.value })}
-                className="p-2 border rounded-lg md:col-span-2"
+                className="p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-400 md:col-span-2"
               />
             </div>
             <button
               onClick={handleAddRole}
-              className="mt-4 bg-indigo-600 text-white px-6 py-2 rounded-lg shadow hover:bg-indigo-700 transition"
+              className="mt-6 bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-8 py-3 rounded-xl shadow-lg hover:scale-105 transition"
             >
               Add Role
             </button>
@@ -202,32 +204,45 @@ export default function Placement() {
         )}
 
         {/* Roles List */}
-        <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {roles.map((role) => (
             <div
               key={role.id}
-              className="bg-white p-6 rounded-2xl shadow-md border border-gray-200 hover:shadow-lg transition"
+              className="bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition"
             >
-              <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+              <div className="flex flex-col justify-between h-full">
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">{role.title}</h2>
-                  <p className="text-gray-600">
-                    {role.type} • {role.company}
-                  </p>
-                  <p className="text-sm text-gray-500">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h2 className="text-2xl font-semibold text-gray-900">
+                      {role.title}
+                    </h2>
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        role.type === "Job"
+                          ? "bg-blue-100 text-blue-700"
+                          : "bg-green-100 text-green-700"
+                      }`}
+                    >
+                      {role.type}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 font-medium">{role.company}</p>
+                  <p className="text-sm text-gray-500 mt-1">
                     <strong>Tech Stack:</strong> {role.techStack}
                   </p>
                   <p className="text-sm text-gray-500">
                     <strong>Eligibility:</strong> {role.eligibility}
                   </p>
-                  <p className="text-gray-700 mt-2">{role.description}</p>
+                  <p className="text-gray-700 mt-3 leading-relaxed">
+                    {role.description}
+                  </p>
                 </div>
                 {userRole === "student" && (
                   <button
                     onClick={() => handleApply(role)}
-                    className="mt-4 md:mt-0 bg-green-600 text-white px-5 py-2 rounded-lg shadow hover:bg-green-700 transition"
+                    className="mt-5 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-2 rounded-xl shadow-md hover:scale-105 transition"
                   >
-                    Apply
+                    Apply Now
                   </button>
                 )}
               </div>
