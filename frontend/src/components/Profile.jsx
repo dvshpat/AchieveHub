@@ -104,11 +104,11 @@ export default function Profile() {
         </div>
 
         {/* Footer Call-to-Action */}
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-2xl font-semibold hover:opacity-90 transition duration-200 shadow-md">
             Edit Profile
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
