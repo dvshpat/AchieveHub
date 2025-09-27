@@ -4,6 +4,8 @@ import API from "../utils/api";
 export default function StudentDashboard() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+   const [verificationUrl, setVerificationUrl] = useState("");
+  const [credentialId, setCredentialId] = useState("");
   const [file, setFile] = useState(null);
   const [previewURL, setPreviewURL] = useState(null);
   const [certificates, setCertificates] = useState([]);
@@ -64,7 +66,12 @@ export default function StudentDashboard() {
       if (description) {
         formData.append('description', description);
       }
-
+         if (verificationUrl) {
+        formData.append('verificationUrl', verificationUrl);
+      }
+      if (credentialId) {
+        formData.append('credentialId', credentialId);
+      }
       // Send to the original upload endpoint with AI processing
       const { data } = await API.post("/certificates/upload", formData, {
         headers: {
@@ -120,7 +127,22 @@ export default function StudentDashboard() {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        
+        <input
+          type="text"
+          placeholder="Verification URL (optional)"
+          className="w-full p-2 mb-4 border rounded"
+          value={verificationUrl}
+          onChange={(e) => setVerificationUrl(e.target.value)}
+        />
+
+        <input
+          type="text"
+          placeholder="Credential ID (optional)"
+          className="w-full p-2 mb-4 border rounded"
+          value={credentialId}
+          onChange={(e) => setCredentialId(e.target.value)}
+        />
+
         <textarea
           placeholder="Description (optional)"
           className="w-full p-2 mb-4 border rounded h-20 resize-none"

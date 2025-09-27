@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const processWithAI = async (certificate) => {
-  const n8nWebhookUrl = "https://deavnshpateriya.app.n8n.cloud/webhook-test/data-extractor";
+  const n8nWebhookUrl = "https://deavnshpateriya.app.n8n.cloud/webhook/data-extractor";
   const webhookPayload = {
     image_url: certificate.imageUrl || certificate.fileURL,
     Requirement: "Analyze the professional certificate and extract key metadata and skills.",
@@ -18,21 +18,25 @@ export const processWithAI = async (certificate) => {
         type: "string",
         description: "The official title or name of the certificate with the issuing authority first put the issuing authority and then the title if the issuing authority ."
       },
-      verificationInfo: {
-        type: "object",
-        description: "An object containing any verifiable links or IDs found on the certificate. If no information is found, the values should be null.",
-        properties: {
-          verificationUrl: {
-            type: "string",
-            format: "uri",
-            description: "The full URL from a QR code or link on the certificate used for verification. Set to null if not present."
-          },
-          credentialId: {
-            type: "string",
-            description: "Any unique credential ID, certificate number, or serial number found on the certificate. Set to null if not present."
-          }
-        }
+        hasQRCode: {
+        type: "boolean",
+        description: "A boolean value indicating if a QR code is visible anywhere on the certificate. Set to true if present, false otherwise."
       },
+    //   verificationInfo: {
+    //     type: "object",
+    //     description: "An object containing any verifiable links or IDs found on the certificate. If no information is found, the values should be null.",
+    //     properties: {
+    //       verificationUrl: {
+    //         type: "string",
+    //         format: "uri",
+    //         description: "The full URL from a QR code or link on the certificate used for verification. Set to null if not present."
+    //       },
+    //       credentialId: {
+    //         type: "string",
+    //         description: "The unique alphanumeric code used for public verification of the certificate. Prioritize the ID explicitly labeled with terms like 'Code', 'Verification Code', or 'Credential ID'. If labels are ambiguous, select the code physically closest to the verification URL. Avoid internal IDs (e.g., 'Career ID', 'Member ID') unless it is the only one available. Set to null if not present."
+    //       }
+    //     }
+    //   },
       keywords: {
         type: "array",
         description: "An array of high-level, categorical keywords describing the certificate's domain and type. The issuing authority (e.g., 'Infosys', 'AWS') MUST be the first keyword. Generate 3-5 additional keywords by selecting the most relevant terms from the examples provided. Examples of Achievement Types: 'Internship', 'Course', 'Hackathon', 'CTF', 'Workshop', 'Professional Certification'. Examples of Technical Domains: 'API', 'Backend', 'Frontend', 'Web Development', 'Cloud Computing', 'DevOps', 'Cybersecurity', 'Networking', 'Data Science', 'Machine Learning', 'AI', 'Software Testing', 'Database', 'Mobile Development', 'UI/UX', 'Game Development', 'Blockchain'.",

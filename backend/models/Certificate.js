@@ -24,7 +24,7 @@ const certificateSchema = new mongoose.Schema(
     type: { type: String },   // maps to certificateTitle
     issuer: { type: String }, // maps to issuingAuthority
     fileURL: { type: String }, // maps to imageUrl
-
+    hasQRCode: Boolean,
     status: {
       type: String,
       enum: ["pending", "verified", "rejected"],
