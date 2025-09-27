@@ -12,17 +12,19 @@ import Register from "./pages/Register";
 import Admin from "./pages/Admin";
 import Student from "./pages/Student";
 import Recruiter from "./pages/Recruiter";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/student" element={<Student />} />
         <Route path="/recruiter" element={<Recruiter />} />
+        <Route path="/" element={<Home />} />
         {/* <Route path="/admin/register" element={<AdminRegisterUser />} />
         <Route path="/upload" element={<UploadCertificate />} />
         <Route path="/analytics" element={<Analytics />} />
