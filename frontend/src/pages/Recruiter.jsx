@@ -1,7 +1,9 @@
+import RecruiterDashboard from "@/components/RecruiterDashboard";
+
 export default function Recruiter() {
   return (
     <div>
-      <h1>Recruiter Dashboard</h1>
+      <RecruiterDashboard />
     </div>
   );
 }
